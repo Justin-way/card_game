@@ -1,14 +1,17 @@
-package card;
+package deck;
+
+import card.Card;
+import card.SimpleCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SimpleGameDeck {
+public class SimpleDeck {
 
     List<Card> cards = new ArrayList<>();
 
-    public SimpleGameDeck() {
+    public SimpleDeck() {
         initializeDeck();
     }
 
@@ -18,7 +21,8 @@ public class SimpleGameDeck {
 
         for (String suit : suits) {
             for (String rank : ranks) {
-                cards.add(new SimpleGameCard(suit, rank));
+
+                cards.add(new SimpleCard(suit, rank));
             }
         }
     }

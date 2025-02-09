@@ -12,6 +12,7 @@ public abstract class Player  {
     int points = 0;
     Card card;
 
+    public abstract void unoChoose(Card card);
     public void addCard(Card card) {
         cards.add(card);
     }
@@ -37,7 +38,7 @@ public abstract class Player  {
         StringBuilder sb = new StringBuilder();
         sb.append(name).append("\t");
         for (Card card : cards) {
-            sb.append(card.toString()).append("\t");
+            sb.append(card.getSuit()).append(" ").append(card.getRank()).append("\t");
         }
         return sb.toString();
     }

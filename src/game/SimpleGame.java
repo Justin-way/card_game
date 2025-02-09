@@ -14,7 +14,7 @@ public class SimpleGame {
 
     public void display() {
         for(Map.Entry<Player, Card> entry : map.entrySet()) {
-            System.out.println("Player: " + entry.getKey().getName() + " , Card: " + entry.getValue());
+            System.out.println("Player: " + entry.getKey().getName() + " , Card: " + entry.getValue().getSuit()+" "+entry.getValue().getRank());
         }
     }
 
@@ -34,7 +34,7 @@ public class SimpleGame {
         }
 
         if (maxPlayer != null) {
-            System.out.println("This round Winner：" + maxPlayer.getName() + ", Card：" + maxCard);
+            System.out.println("This round Winner：" + maxPlayer.getName() + ", Card：" + maxCard.getSuit() +" "+ maxCard.getRank());
             maxPlayer.addPoints();
             System.out.println("This round Winner：" + maxPlayer.getName() + ", Current point：" + maxPlayer.getPoints());
 

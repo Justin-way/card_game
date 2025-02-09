@@ -1,8 +1,12 @@
-import card.SimpleGameCard;
-import card.SimpleGameDeck;
+import card.SimpleCard;
+import deck.SimpleDeck;
+import deck.UnoDeck;
 import game.SimpleGame;
+import game.UnoGame;
 import person.AiPlayer;
 import person.Player;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,29 +21,26 @@ public class Main {
         aiPlayer3.setName("P3");
         aiPlayer4.setName("P4");
 
-        SimpleGameDeck deck = new SimpleGameDeck();
-        deck.shuffle();
+        UnoDeck unoDeck = new UnoDeck();
 
-        for (int round = 0; round < 13; round++) {
-            aiPlayer1.addCard(deck.drawCard());
-            aiPlayer2.addCard(deck.drawCard());
-            aiPlayer3.addCard(deck.drawCard());
-            aiPlayer4.addCard(deck.drawCard());
+        for (int round = 0; round < 5; round++) {
+            aiPlayer1.addCard(unoDeck.drawCard());
+            aiPlayer2.addCard(unoDeck.drawCard());
+            aiPlayer3.addCard(unoDeck.drawCard());
+            aiPlayer4.addCard(unoDeck.drawCard());
         }
-        System.out.println(aiPlayer1);
-        System.out.println(aiPlayer2);
-        System.out.println(aiPlayer3);
-        System.out.println(aiPlayer4);
+        List<Player> players = List.of(aiPlayer1, aiPlayer2, aiPlayer3, aiPlayer4);
 
-        SimpleGameCard card = (SimpleGameCard) aiPlayer1.choose();
-        SimpleGame game = new SimpleGame();
-        for (int round = 0; round < 13; round++) {
-            game.takeTurn(aiPlayer1, aiPlayer2, aiPlayer3, aiPlayer4);
-            game.display();
-            game.compare();
+        players.forEach(player -> {
+            System.out.println("Player " + (players.indexOf(player) + 1) + "'s hand:");
+            player.getCards().forEach(card ->
+                    System.out.println("  " + card.getRank() + " " + card.getSuit())
+            );
+        });
+        UnoGame unoGame = new UnoGame(unoDeck);
+
+        while (!unoGame.hasWinner) {
+            unoGame.takeTurn(players);
         }
-
-        game.getWinner();
-
     }
 }

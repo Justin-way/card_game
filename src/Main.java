@@ -1,6 +1,7 @@
 import card.Card;
 import card.SimpleGameCard;
 import person.AI;
+import person.Human;
 import person.Player;
 
 import java.util.ArrayList;
@@ -22,9 +23,14 @@ public class Main {
         AI ai = new AI();
         ai.setCards(cards);
 
+        Human human = new Human();
+        human.setCards(cards);
+
         while (!cards.isEmpty()) {
-            SimpleGameCard card = (SimpleGameCard) ai.choose(cards);
+            SimpleGameCard card = (SimpleGameCard) human.choose(cards);
             System.out.println("choose cards:" + card.getId());
         }
+
+
     }
 }

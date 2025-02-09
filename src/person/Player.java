@@ -12,6 +12,13 @@ public abstract class Player  {
     int point = 0;
     List<Card> cards;
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
 
     protected void setName(String name){
         this.name = name;

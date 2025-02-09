@@ -27,7 +27,7 @@ public class SimpleGameDeck {
         return cards;
     }
 
-    public void shuffle(){
+    public void shuffle() {
         Collections.shuffle(cards);
     }
 
@@ -38,5 +38,12 @@ public class SimpleGameDeck {
             sb.append(card.toString()).append("\n");
         }
         return sb.toString();
+    }
+
+    public Card drawCard() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.removeFirst();
     }
 }

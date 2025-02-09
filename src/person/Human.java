@@ -9,7 +9,7 @@ public class Human extends Player {
     CommandLine commandLine = new CommandLine();
 
     @Override
-    public Card choose(List<Card> cards) {
+    public Card choose() {
         return commandLine.execute(cards);
     }
 

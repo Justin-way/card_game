@@ -1,16 +1,20 @@
 package person;
 
 import card.Card;
-import card.SimpleGameCard;
-import card.UnoCard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player  {
     int id;
+    List<Card> cards = new ArrayList<>();
     String name;
-    int point = 0;
-    List<Card> cards;
+    int points = 0;
+    Card card;
+
+    public void addCard(Card card) {
+        cards.add(card);
+    }
 
     public List<Card> getCards() {
         return cards;
@@ -20,12 +24,29 @@ public abstract class Player  {
         this.cards = cards;
     }
 
-    protected void setName(String name){
+    public void setName(String name){
         this.name = name;
     };
-    protected void addPoint() {
-        point++;
+    public void addPoints() {
+        points++;
     };
-    public abstract Card choose(List<Card> cards);
+    public abstract Card choose();
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append("\t");
+        for (Card card : cards) {
+            sb.append(card.toString()).append("\t");
+        }
+        return sb.toString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPoints() {
+        return points;
+    }
 }

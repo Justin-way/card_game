@@ -13,7 +13,6 @@ public class AI extends Player{
         if (cards == null || cards.isEmpty()) {
             return null;
         }
-
         Random random = new Random();
         int index = random.nextInt(cards.size());
         return cards.remove(index);

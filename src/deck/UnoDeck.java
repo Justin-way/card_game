@@ -1,22 +1,21 @@
 package deck;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import card.Card;
 import card.UnoCard;
 
-public class UnoDeck {
+public class UnoDeck extends Deck {
 
-	List<Card> cards = new ArrayList<>();
 	List<Card> tableCards = new ArrayList<>();
 	private Card lastCard;
 	public UnoDeck() {
 		initializeDeck();
 	}
 
-	private void initializeDeck() {
+	@Override
+	protected void initializeDeck() {
 		String[] color = {"BLUE", "RED", "YELLOW", "GREEN"};
 		String[] number = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
@@ -27,14 +26,9 @@ public class UnoDeck {
 		}
 	}
 
-	public List<Card> getCards() {
-		return cards;
-	}
 
-	public void shuffle() {
-		Collections.shuffle(cards);
-	}
 
+	@Override
 	public Card drawCard() {
 
 		if (cards.isEmpty()) {

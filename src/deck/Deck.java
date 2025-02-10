@@ -1,12 +1,16 @@
 package deck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import card.Card;
 
 public abstract class Deck {
 	protected List<Card> cards = new ArrayList<>();
+
+	protected abstract void initializeDeck();
+	protected abstract Card drawCard();
 
 	public Deck() {
 		initializeDeck();
@@ -16,12 +20,8 @@ public abstract class Deck {
 		return cards;
 	}
 
-
-	public Card drawCard() {
-		if (cards.isEmpty()) {
-			return null;
-		}
-		return cards.remove(0);
+	public void shuffle() {
+		Collections.shuffle(cards);
 	}
 
 	@Override
@@ -33,6 +33,5 @@ public abstract class Deck {
 		return sb.toString();
 	}
 
-	protected abstract void initializeDeck();
 
 }

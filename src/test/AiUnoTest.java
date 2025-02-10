@@ -1,11 +1,12 @@
+package test;
 import java.util.List;
 
-import deck.SimpleDeck;
-import game.SimpleGame;
+import deck.UnoDeck;
+import game.UnoGame;
 import player.AiPlayer;
 import player.Player;
 
-public class AiSimpleTest {
+public class AiUnoTest {
 	public static void main(String[] args) {
 
 		Player aiPlayer1 = new AiPlayer();
@@ -18,16 +19,16 @@ public class AiSimpleTest {
 		aiPlayer3.setName("P3");
 		aiPlayer4.setName("P4");
 
-		SimpleDeck simpleDeck = new SimpleDeck();
-		SimpleGame simple = new SimpleGame();
+		UnoDeck unoDeck = new UnoDeck();
+		UnoGame unoGame = new UnoGame(unoDeck);
 
-		simpleDeck.shuffle();
-
-		for (int round = 0; round < 13; round++) {
-			aiPlayer1.addCard(simpleDeck.drawCard());
-			aiPlayer2.addCard(simpleDeck.drawCard());
-			aiPlayer3.addCard(simpleDeck.drawCard());
-			aiPlayer4.addCard(simpleDeck.drawCard());
+		unoDeck.shuffle();
+		unoDeck.flop();
+		for (int round = 0; round < 5; round++) {
+			aiPlayer1.addCard(unoDeck.drawCard());
+			aiPlayer2.addCard(unoDeck.drawCard());
+			aiPlayer3.addCard(unoDeck.drawCard());
+			aiPlayer4.addCard(unoDeck.drawCard());
 		}
 		List<Player> players = List.of(aiPlayer1, aiPlayer2, aiPlayer3, aiPlayer4);
 
@@ -36,7 +37,7 @@ public class AiSimpleTest {
 			player.getCards().forEach(card -> System.out.println("  " + card.getRank() + " " + card.getSuit()));
 		});
 
-		simple.playGame(players);
+		unoGame.playGame(players);
 
 	}
 }

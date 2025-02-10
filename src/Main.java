@@ -38,8 +38,7 @@ public class Main {
 					);
 		});
 
-		while (!unoGame.hasWinner) {
-			unoGame.takeTurn(players);
-		}
+		unoGame.playGame(players);
+
 	}
 }

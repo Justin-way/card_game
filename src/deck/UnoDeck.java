@@ -41,10 +41,10 @@ public class UnoDeck {
 			System.out.println("Deck is empty! Trying to reset...");
 			if (!resetDeck()) {
 				System.out.println("Deck reset failed! No more cards.");
-				return null; // 真的無牌可用時才結束遊戲
+				return null;
 			}
 		}
-		return cards.remove(0); // 抽取第一張牌
+		return cards.remove(0);
 	}
 
 
@@ -52,7 +52,7 @@ public class UnoDeck {
 	public void flop() {
 
 		if (cards.isEmpty()) {
-			resetDeck(); // 先補充牌堆
+			resetDeck();
 		}
 		if (!cards.isEmpty()) {
 			lastCard = cards.remove(0);
@@ -66,24 +66,24 @@ public class UnoDeck {
 
 	public boolean resetDeck() {
 		if (tableCards.size() <= 1) {
-			System.out.println("牌堆不足，無法重置！");
-			return false; // 不能重置，因為沒有足夠的牌
+			System.out.println("Insufficient cards in deck, unable to reset!");
+			return false;
 		}
 
-		Card last = lastCard; // 保留最後出的牌
-		tableCards.remove(last); // 只移除最後一張，剩下的才回收
+		Card last = lastCard;
+		tableCards.remove(last);
 
 		if (tableCards.isEmpty()) {
-			System.out.println("牌堆已經空了，無法重置！");
-			return false; // 確保有可用的牌
+			System.out.println("Insufficient cards in deck, unable to reset!");
+			return false;
 		}
 
 		System.out.println("Resetting deck with " + tableCards.size() + " cards.");
-		cards.addAll(tableCards); // 把棄牌堆加入牌堆
-		tableCards.clear(); // 清空棄牌堆
-		tableCards.add(last); // 只保留最後一張
+		cards.addAll(tableCards);
+		tableCards.clear();
+		tableCards.add(last);
 
-		shuffle(); // 重新洗牌
+		shuffle();
 		return true;
 	}
 

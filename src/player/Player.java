@@ -6,13 +6,15 @@ import java.util.List;
 import card.Card;
 
 public abstract class Player  {
-	int id;
+
 	List<Card> cards = new ArrayList<>();
 	String name;
 	int points = 0;
 	Card card;
 
 	public abstract void unoChoose(Card card1);
+	public abstract Card simpleChoose();
+
 	public void addCard(Card card) {
 		cards.add(card);
 	}
@@ -31,7 +33,14 @@ public abstract class Player  {
 	public void addPoints() {
 		points++;
 	}
-	public abstract Card simpleChoose();
+
+	public String getName() {
+		return name;
+	}
+
+	public int getPoints() {
+		return points;
+	}
 
 	@Override
 	public String toString() {
@@ -43,11 +52,5 @@ public abstract class Player  {
 		return sb.toString();
 	}
 
-	public String getName() {
-		return name;
-	}
 
-	public int getPoints() {
-		return points;
-	}
 }

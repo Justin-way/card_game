@@ -2,7 +2,7 @@ package game;
 
 import java.util.List;
 
-import person.Player;
+import player.Player;
 
 public abstract class Game {
 	public boolean hasWinner = false;

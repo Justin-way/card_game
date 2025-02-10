@@ -2,10 +2,10 @@ import java.util.List;
 
 import deck.UnoDeck;
 import game.UnoGame;
-import person.AiPlayer;
-import person.Player;
+import player.AiPlayer;
+import player.Player;
 
-public class Main {
+public class AiUnoTest {
 	public static void main(String[] args) {
 
 		Player aiPlayer1 = new AiPlayer();
@@ -33,9 +33,7 @@ public class Main {
 
 		players.forEach(player -> {
 			System.out.println("Player " + (players.indexOf(player) + 1) + "'s hand:");
-			player.getCards().forEach(card ->
-			System.out.println("  " + card.getRank() + " " + card.getSuit())
-					);
+			player.getCards().forEach(card -> System.out.println("  " + card.getRank() + " " + card.getSuit()));
 		});
 
 		unoGame.playGame(players);

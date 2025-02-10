@@ -5,7 +5,7 @@ import java.util.List;
 
 import card.Card;
 import deck.UnoDeck;
-import person.Player;
+import player.Player;
 
 public class UnoGame extends Game {
 	private UnoDeck deck;

@@ -1,8 +1,8 @@
 import card.SimpleCard;
 import deck.SimpleDeck;
 import game.SimpleGame;
-import person.AiPlayer;
-import person.Player;
+import player.AiPlayer;
+import player.Player;
 
 public class Temp2 {
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class Temp2 {
         System.out.println(aiPlayer3);
         System.out.println(aiPlayer4);
 
-        SimpleCard card = (SimpleCard) aiPlayer1.choose();
+        SimpleCard card = (SimpleCard) aiPlayer1.simpleChoose();
         SimpleGame game = new SimpleGame();
         for (int round = 0; round < 13; round++) {
             game.takeTurn(aiPlayer1, aiPlayer2, aiPlayer3, aiPlayer4);

@@ -1,6 +1,6 @@
 import card.SimpleCard;
 import deck.SimpleDeck;
-import person.AiPlayer;
+import player.AiPlayer;
 
 public class Temp {
     public static void main(String[] args) {
@@ -28,7 +28,7 @@ public class Temp {
 //        human.setCards(cards);
 //
 
-        SimpleCard card = (SimpleCard) aiPlayer.choose();
+        SimpleCard card = (SimpleCard) aiPlayer.simpleChoose();
         System.out.println("choose cards: " + card);
 
 //        while (!ai.getCards().isEmpty()) {

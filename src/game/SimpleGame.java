@@ -6,22 +6,27 @@ import java.util.List;
 import java.util.Map;
 
 import card.Card;
-import person.Player;
+import player.Player;
 
 public class SimpleGame extends Game {
-	private Map<Player, Card> map = new LinkedHashMap<>();
 
+	private Map<Player, Card> map = new LinkedHashMap<>();
+	int round = 1;
 	@Override
 	protected void takeTurn(List<Player> players) {
-		System.out.println("---------- Start this round ----------");
+		System.out.println("Round: " + round + " starts");
 		map.clear();
 
 		for (Player player : players) {
-			map.put(player, player.choose());
+			map.put(player, player.simpleChoose());
 		}
 
 		display();
 		compare();
+		round++;
+		if (round == 14) {
+			hasWinner = true;
+		}
 	}
 
 	private void display() {

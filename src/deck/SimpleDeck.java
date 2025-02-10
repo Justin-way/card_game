@@ -7,7 +7,7 @@ import java.util.List;
 import card.Card;
 import card.SimpleCard;
 
-public class SimpleDeck {
+public class SimpleDeck extends Deck {
 
 	List<Card> cards = new ArrayList<>();
 
@@ -15,7 +15,8 @@ public class SimpleDeck {
 		initializeDeck();
 	}
 
-	private void initializeDeck() {
+	@Override
+	protected void initializeDeck() {
 		String[] suits = {"heart", "diamond", "club", "spade"};
 		String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
@@ -27,10 +28,8 @@ public class SimpleDeck {
 		}
 	}
 
-	public List<Card> getCards() {
-		return cards;
-	}
 
+	@Override
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
@@ -44,6 +43,7 @@ public class SimpleDeck {
 		return sb.toString();
 	}
 
+	@Override
 	public Card drawCard() {
 		if (cards.isEmpty()) {
 			return null;

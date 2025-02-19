@@ -17,7 +17,7 @@ public class HumanPlayer extends Player {
 
 	@Override
 	public void unoChoose(Card matchedcard) {
-		System.out.println("Card" + matchedcard.getColor() + ", " + matchedcard.getNumber());
+		System.out.println("Card" + matchedcard.getSuitOrColor() + ", " + matchedcard.getRankOrNumber());
 		Card selectedCard = commandLine.execute(cards, matchedcard);
 		cards.remove(selectedCard);
 	}

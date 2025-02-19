@@ -37,7 +37,7 @@ public class ShowdownGame extends Game {
 
 	private void display() {
 		for (Map.Entry<Player, Card> entry : map.entrySet()) {
-			System.out.println("Player: " + entry.getKey().getName() + " , Card: " + entry.getValue().getColor() + " " + entry.getValue().getNumber());
+			System.out.println("Player: " + entry.getKey().getName() + " , Card: " + entry.getValue().getSuitOrColor() + " " + entry.getValue().getRankOrNumber());
 		}
 	}
 
@@ -56,7 +56,7 @@ public class ShowdownGame extends Game {
 		}
 
 		if (maxPlayer != null) {
-			System.out.println("This round Winner: " + maxPlayer.getName() + ", Card: " + maxCard.getColor() + " " + maxCard.getNumber());
+			System.out.println("This round Winner: " + maxPlayer.getName() + ", Card: " + maxCard.getSuitOrColor() + " " + maxCard.getRankOrNumber());
 			maxPlayer.addPoints();
 		} else {
 			System.out.println("No cards to play.");
@@ -64,13 +64,13 @@ public class ShowdownGame extends Game {
 	}
 
 	private static boolean isGreater(Card card1, Card card2, List<String> rankOrder, List<String> suitOrder) {
-		int rank1 = rankOrder.indexOf(card1.getNumber());
-		int rank2 = rankOrder.indexOf(card2.getNumber());
+		int rank1 = rankOrder.indexOf(card1.getRankOrNumber());
+		int rank2 = rankOrder.indexOf(card2.getRankOrNumber());
 
 		if (rank1 != rank2) {
 			return rank1 > rank2;
 		}
-		return suitOrder.indexOf(card1.getColor()) > suitOrder.indexOf(card2.getColor());
+		return suitOrder.indexOf(card1.getSuitOrColor()) > suitOrder.indexOf(card2.getSuitOrColor());
 	}
 
 	@Override

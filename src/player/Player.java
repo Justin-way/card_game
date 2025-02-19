@@ -41,7 +41,7 @@ public abstract class Player  {
 		StringBuilder sb = new StringBuilder();
 		sb.append(name).append("\t");
 		for (Card card : cards) {
-			sb.append(card.getColor()).append(" ").append(card.getNumber()).append("\t");
+			sb.append(card.getSuitOrColor()).append(" ").append(card.getRankOrNumber()).append("\t");
 		}
 		return sb.toString();
 	}

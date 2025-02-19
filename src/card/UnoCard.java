@@ -41,11 +41,11 @@ public class UnoCard extends Card {
         this.rank = rank;
     }
 
-    public String getNumber() {
+    public String getRankOrNumber() {
         return rank;
     }
 
-    public String getColor() {
+    public String getSuitOrColor() {
         return suit;
     }
 }

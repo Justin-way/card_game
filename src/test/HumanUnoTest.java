@@ -35,7 +35,7 @@ public class HumanUnoTest {
 		players.forEach(player -> {
 			System.out.println("Player " + (players.indexOf(player) + 1) + "'s hand:");
 			player.getCards().forEach(card ->
-			System.out.println("  " + card.getNumber() + " " + card.getColor())
+			System.out.println("  " + card.getRankOrNumber() + " " + card.getSuitOrColor())
 					);
 		});
 

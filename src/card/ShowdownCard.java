@@ -6,49 +6,49 @@ import java.util.Set;
 
 public class ShowdownCard extends Card {
 
-    private String number;
-    private String color;
+    private String rank;
+    private String suit;
 
-    private static final Set<String> validNumber = new HashSet<>(Arrays.asList(
+    private static final Set<String> validRank = new HashSet<>(Arrays.asList(
             "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
     ));
-    private static final Set<String> validColor = new HashSet<>(Arrays.asList(
+    private static final Set<String> validSuit = new HashSet<>(Arrays.asList(
             "club", "diamond", "heart", "spade"
     ));
 
     public ShowdownCard(String color, String number) {
-        setColor(color);
-        setNumber(number);
+        setSuit(color);
+        setRank(number);
     }
 
-    private void validateSuit(String suit) {
-        if (!validColor.contains(suit)) {
-            throw new IllegalArgumentException("Invalid suit! Allowed: " + validColor);
+    private void validateSuitOrColor(String suit) {
+        if (!validSuit.contains(suit)) {
+            throw new IllegalArgumentException("Invalid suit! Allowed: " + validSuit);
         }
     }
 
-    private void validateRank(String rank) {
-        if (!validNumber.contains(rank)) {
-            throw new IllegalArgumentException("Invalid rank! Allowed: " + validNumber);
+    private void validateRankOrNumber(String rank) {
+        if (!validRank.contains(rank)) {
+            throw new IllegalArgumentException("Invalid rank! Allowed: " + validRank);
         }
     }
 
-    public void setColor(String color) {
-        validateSuit(color);
-        this.color = color;
+    public void setSuit(String suit) {
+        validateSuitOrColor(suit);
+        this.suit = suit;
     }
 
-    public void setNumber(String number) {
-        validateRank(number);
-        this.number = number;
+    public void setRank(String rank) {
+        validateRankOrNumber(rank);
+        this.rank = rank;
     }
 
-    public String getNumber() {
-        return number;
+    public String getRankOrNumber() {
+        return rank;
     }
 
-    public String getColor() {
-        return color;
+    public String getSuitOrColor() {
+        return suit;
     }
 }
 

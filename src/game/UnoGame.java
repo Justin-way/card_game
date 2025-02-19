@@ -23,15 +23,15 @@ public class UnoGame extends Game {
 		}
 
 		for (Player player : players) {
-			System.out.println("Last card: " + deck.getLastCard().getColor() + ", " + deck.getLastCard().getNumber());
+			System.out.println("Last card: " + deck.getLastCard().getSuitOrColor() + ", " + deck.getLastCard().getRankOrNumber());
 			System.out.println("Player " + player.getName() + " has:");
-			player.getCards().forEach(card -> System.out.println("  " + card.getNumber() + " of " + card.getColor()));
+			player.getCards().forEach(card -> System.out.println("  " + card.getRankOrNumber() + " of " + card.getSuitOrColor()));
 
 			boolean hasPlayed = false;
 			for (Card card : new ArrayList<>(player.getCards())) {
-				if (card.getColor().equals(deck.getLastCard().getColor()) || card.getNumber().equals(deck.getLastCard().getNumber())) {
+				if (card.getSuitOrColor().equals(deck.getLastCard().getSuitOrColor()) || card.getRankOrNumber().equals(deck.getLastCard().getRankOrNumber())) {
 					deck.setLastCard(card);
-					System.out.println("Player " + player.getName() + " plays " + card.getColor() + ", " + card.getNumber());
+					System.out.println("Player " + player.getName() + " plays " + card.getSuitOrColor() + ", " + card.getRankOrNumber());
 					player.unoChoose(card);
 					deck.getTableCards().add(card);
 					checkWinner(player);
@@ -44,7 +44,7 @@ public class UnoGame extends Game {
 				Card drawnCard = deck.drawCard();
 				if (drawnCard != null) {
 					player.addCard(drawnCard);
-					System.out.println(player.getName() + " draws a card: " + drawnCard.getNumber() + " " + drawnCard.getColor());
+					System.out.println(player.getName() + " draws a card: " + drawnCard.getRankOrNumber() + " " + drawnCard.getSuitOrColor());
 				}
 			}
 

@@ -1,12 +1,12 @@
 package deck;
 
 import card.Card;
-import card.SimpleCard;
+import card.ShowdownCard;
 
-public class SimpleDeck extends Deck {
+public class ShowdownDeck extends Deck {
 
 
-	public SimpleDeck() {
+	public ShowdownDeck() {
 		initializeDeck();
 	}
 
@@ -18,7 +18,7 @@ public class SimpleDeck extends Deck {
 		for (String suit : suits) {
 			for (String rank : ranks) {
 
-				cards.add(new SimpleCard(suit, rank));
+				cards.add(new ShowdownCard(suit, rank));
 			}
 		}
 	}

@@ -6,16 +6,22 @@ import java.util.List;
 import java.util.Map;
 
 import card.Card;
+import deck.Deck;
 import player.Player;
 
-public class SimpleGame extends Game {
+public class ShowdownGame extends Game {
 
 	private Map<Player, Card> map = new LinkedHashMap<>();
 	int round = 1;
+
+	public ShowdownGame(Deck deck) {
+		super(deck);
+	}
+
 	@Override
-	protected void takeTurn(List<Player> players) {
+	protected void takeTurn() {
+
 		System.out.println("Round: " + round + " starts");
-		map.clear();
 
 		for (Player player : players) {
 			map.put(player, player.simpleChoose());
@@ -31,7 +37,7 @@ public class SimpleGame extends Game {
 
 	private void display() {
 		for (Map.Entry<Player, Card> entry : map.entrySet()) {
-			System.out.println("Player: " + entry.getKey().getName() + " , Card: " + entry.getValue().getSuit() + " " + entry.getValue().getRank());
+			System.out.println("Player: " + entry.getKey().getName() + " , Card: " + entry.getValue().getColor() + " " + entry.getValue().getNumber());
 		}
 	}
 
@@ -50,7 +56,7 @@ public class SimpleGame extends Game {
 		}
 
 		if (maxPlayer != null) {
-			System.out.println("This round Winner: " + maxPlayer.getName() + ", Card: " + maxCard.getSuit() + " " + maxCard.getRank());
+			System.out.println("This round Winner: " + maxPlayer.getName() + ", Card: " + maxCard.getColor() + " " + maxCard.getNumber());
 			maxPlayer.addPoints();
 		} else {
 			System.out.println("No cards to play.");
@@ -58,13 +64,13 @@ public class SimpleGame extends Game {
 	}
 
 	private static boolean isGreater(Card card1, Card card2, List<String> rankOrder, List<String> suitOrder) {
-		int rank1 = rankOrder.indexOf(card1.getRank());
-		int rank2 = rankOrder.indexOf(card2.getRank());
+		int rank1 = rankOrder.indexOf(card1.getNumber());
+		int rank2 = rankOrder.indexOf(card2.getNumber());
 
 		if (rank1 != rank2) {
 			return rank1 > rank2;
 		}
-		return suitOrder.indexOf(card1.getSuit()) > suitOrder.indexOf(card2.getSuit());
+		return suitOrder.indexOf(card1.getColor()) > suitOrder.indexOf(card2.getColor());
 	}
 
 	@Override

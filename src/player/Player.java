@@ -18,36 +18,30 @@ public abstract class Player  {
 	public void addCard(Card card) {
 		cards.add(card);
 	}
-
-	public List<Card> getCards() {
-		return cards;
-	}
-
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
 	}
-
 	public void setName(String name){
 		this.name = name;
 	}
 	public void addPoints() {
 		points++;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public int getPoints() {
 		return points;
 	}
-
+	public List<Card> getCards() {
+		return cards;
+	}
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(name).append("\t");
 		for (Card card : cards) {
-			sb.append(card.getSuit()).append(" ").append(card.getRank()).append("\t");
+			sb.append(card.getColor()).append(" ").append(card.getNumber()).append("\t");
 		}
 		return sb.toString();
 	}

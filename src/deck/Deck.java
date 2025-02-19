@@ -10,7 +10,7 @@ public abstract class Deck {
 	protected List<Card> cards = new ArrayList<>();
 
 	protected abstract void initializeDeck();
-	protected abstract Card drawCard();
+	public abstract Card drawCard();
 
 	public Deck() {
 		initializeDeck();
@@ -34,4 +34,14 @@ public abstract class Deck {
 	}
 
 
+	public Card getLastCard() {
+		return cards.get(cards.size() - 1);
+	}
+
+	public void setLastCard(Card card) {
+	}
+
+	public <E> List<E> getTableCards() {
+		return null;
+	}
 }

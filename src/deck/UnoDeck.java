@@ -51,7 +51,7 @@ public class UnoDeck extends Deck {
 		if (!cards.isEmpty()) {
 			lastCard = cards.remove(0);
 			tableCards.add(lastCard);
-			System.out.println("last card: " + lastCard.getSuit() + ", " + lastCard.getRank());
+			System.out.println("last card: " + lastCard.getColor() + ", " + lastCard.getNumber());
 		} else {
 			throw new IllegalStateException("Flop failed: No available cards!");
 		}

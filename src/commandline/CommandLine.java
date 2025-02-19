@@ -26,7 +26,7 @@ public class CommandLine {
 
 		// check rank and suit
 		for (Card card : cards) {
-			if (card.getRank().equalsIgnoreCase(rank) && card.getSuit().equalsIgnoreCase(suit)) {
+			if (card.getNumber().equalsIgnoreCase(rank) && card.getColor().equalsIgnoreCase(suit)) {
 				selectedCard = card;
 				break;
 			}
@@ -50,7 +50,7 @@ public class CommandLine {
 		System.out.println("Available cards:");
 		printAvailableCards(cards);
 
-		System.out.println("\nYou should enter: " + matchedcard.getSuit() + " " + matchedcard.getRank());
+		System.out.println("\nYou should enter: " + matchedcard.getColor() + " " + matchedcard.getNumber());
 
 		while (true) {
 			System.out.println("\nPlease enter the card suit (\"BLUE\", \"RED\", \"YELLOW\", \"GREEN\"): ");
@@ -60,7 +60,7 @@ public class CommandLine {
 			String rank = scanner.nextLine().trim();
 
 			for (Card card : cards) {
-				if (card.getRank().equalsIgnoreCase(rank) && card.getSuit().equalsIgnoreCase(suit)) {
+				if (card.getNumber().equalsIgnoreCase(rank) && card.getColor().equalsIgnoreCase(suit)) {
 					if (card.equals(matchedcard)) {
 						return card;
 					}
@@ -74,7 +74,7 @@ public class CommandLine {
 
 	private static void printAvailableCards(List<Card> cards) {
 		for (Card card : cards) {
-			System.out.println(card.getSuit() + " " + card.getRank());
+			System.out.println(card.getColor() + " " + card.getNumber());
 		}
 	}
 

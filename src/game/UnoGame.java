@@ -1,36 +1,37 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import card.Card;
-import deck.UnoDeck;
+import deck.Deck;
 import player.Player;
 
 public class UnoGame extends Game {
-	private UnoDeck deck;
+	private final Deck deck;
 
-	public UnoGame(UnoDeck deck) {
-		this.deck = deck;
+	public UnoGame(Deck deck) {
+        super(deck);
+        this.deck = deck;
 	}
 
 	@Override
-	public void takeTurn(List<Player> players) {
+	public void takeTurn() {
+
 		if (deck.getLastCard() == null) {
 			System.out.println("Last card is null, resetting the deck...");
 			deck.setLastCard(deck.drawCard());
 		}
 
 		for (Player player : players) {
-			System.out.println("Last card: " + deck.getLastCard().getSuit() + ", " + deck.getLastCard().getRank());
+			System.out.println("Last card: " + deck.getLastCard().getColor() + ", " + deck.getLastCard().getNumber());
 			System.out.println("Player " + player.getName() + " has:");
-			player.getCards().forEach(card -> System.out.println("  " + card.getRank() + " of " + card.getSuit()));
+			player.getCards().forEach(card -> System.out.println("  " + card.getNumber() + " of " + card.getColor()));
 
 			boolean hasPlayed = false;
 			for (Card card : new ArrayList<>(player.getCards())) {
-				if (card.getSuit().equals(deck.getLastCard().getSuit()) || card.getRank().equals(deck.getLastCard().getRank())) {
+				if (card.getColor().equals(deck.getLastCard().getColor()) || card.getNumber().equals(deck.getLastCard().getNumber())) {
 					deck.setLastCard(card);
-					System.out.println("Player " + player.getName() + " plays " + card.getSuit() + ", " + card.getRank());
+					System.out.println("Player " + player.getName() + " plays " + card.getColor() + ", " + card.getNumber());
 					player.unoChoose(card);
 					deck.getTableCards().add(card);
 					checkWinner(player);
@@ -43,7 +44,7 @@ public class UnoGame extends Game {
 				Card drawnCard = deck.drawCard();
 				if (drawnCard != null) {
 					player.addCard(drawnCard);
-					System.out.println(player.getName() + " draws a card: " + drawnCard.getRank() + " " + drawnCard.getSuit());
+					System.out.println(player.getName() + " draws a card: " + drawnCard.getNumber() + " " + drawnCard.getColor());
 				}
 			}
 
@@ -52,6 +53,8 @@ public class UnoGame extends Game {
 			}
 		}
 	}
+
+
 
 	@Override
 	protected void announceWinner() {
